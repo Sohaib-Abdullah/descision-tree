@@ -2,6 +2,11 @@
 
 Student ML project: predict whether an online shopping session will generate **revenue**, using a **Decision Tree** classifier on session behaviour features.
 
+**Deploy this app (Streamlit Cloud):**  
+https://share.streamlit.io/deploy?repository=Sohaib-Abdullah/descision-tree&branch=main&mainModule=app.py
+
+> Note: Streamlit apps do **not** run on Vercel. Use the link above (Streamlit Community Cloud).
+
 ## What's inside
 
 | File | Purpose |
@@ -33,28 +38,26 @@ App opens at `http://localhost:8501`.
 
 ## Deploy
 
-### Streamlit Community Cloud (recommended for this app)
+### Why not Vercel?
 
-Streamlit apps do **not** run on Vercel (Vercel is for Node/static frontends). For this project use [Streamlit Community Cloud](https://share.streamlit.io):
+**Vercel does not run Streamlit.** Vercel is built for Node/static frontends and short serverless functions. Streamlit needs a long-running Python process with WebSockets, so this app cannot be hosted there.
 
-1. Push this repo to GitHub
-2. Go to share.streamlit.io → **New app**
-3. Select the repo, branch `main`, main file `app.py`
-4. Deploy
+Use **Streamlit Community Cloud** instead (free, built for this stack).
 
-The cloud build will install `requirements.txt`. Make sure `model/` (trained `.joblib` + `metrics.json`) is committed, **or** add a startup step that runs `train_model.py` before the app (slower cold start).
+### Streamlit Community Cloud
 
-### GitHub
+1. Open the pre-filled deploy link:  
+   https://share.streamlit.io/deploy?repository=Sohaib-Abdullah/descision-tree&branch=main&mainModule=app.py
+2. Sign in with the **Sohaib-Abdullah** GitHub account and authorize Streamlit
+3. Confirm:
+   - Repository: `Sohaib-Abdullah/descision-tree`
+   - Branch: `main`
+   - Main file: `app.py`
+4. Click **Deploy**
 
-```bash
-git init
-git add .
-git commit -m "Add ShopSmart decision-tree project and Streamlit app"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git push -u origin main
-```
+Public URL will look like: `https://….streamlit.app`
 
+The trained model under `model/` is already in the repo, so the cloud app starts without running `train_model.py` again.
 ## Project structure
 
 ```
